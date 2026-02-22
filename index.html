@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slayd Dizaynini Tanlash</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: var(--tg-theme-bg-color, #ffffff);
+            color: var(--tg-theme-text-color, #000000);
+            padding: 15px;
+            margin: 0;
+            padding-bottom: 80px; /* MainButton uchun joy */
+        }
+        h2 { text-align: center; font-size: 18px; margin-bottom: 20px; }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .card {
+            background-color: var(--tg-theme-secondary-bg-color, #f1f1f1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .card.active {
+            border-color: var(--tg-theme-button-color, #3390ec);
+            background-color: rgba(51, 144, 236, 0.1);
+        }
+        .icon { font-size: 30px; margin-bottom: 10px; }
+        .title { font-weight: bold; font-size: 14px; }
+        .section-title { margin-top: 25px; margin-bottom: 15px; font-size: 16px; border-bottom: 1px solid var(--tg-theme-hint-color, #ccc); padding-bottom: 5px; font-weight: bold;}
+    </style>
+</head>
+<body>
+    <h2>🎨 Slayd uslubini tanlang</h2>
+
+    <div class="section-title">🤖 AI Dizaynlari (Internetdan rasm)</div>
+    <div class="grid">
+        <div class="card" onclick="selectItem('ai', '💼 Biznes (Ko\'k)')"><div class="icon">💼</div><div class="title">Biznes (Ko'k)</div></div>
+        <div class="card" onclick="selectItem('ai', '🎨 Kreativ (Yorqin)')"><div class="icon">🎨</div><div class="title">Kreativ (Yorqin)</div></div>
+        <div class="card" onclick="selectItem('ai', '🌑 Minimalist (Oq-Qora)')"><div class="icon">🌑</div><div class="title">Minimalist</div></div>
+        <div class="card" onclick="selectItem('ai', '🟡 Gold')"><div class="icon">🟡</div><div class="title">Gold</div></div>
+        <div class="card" onclick="selectItem('ai', '⚫️ Black')"><div class="icon">⚫️</div><div class="title">Black</div></div>
+        <div class="card" onclick="selectItem('ai', '🌸 Pushti')"><div class="icon">🌸</div><div class="title">Pushti</div></div>
+    </div>
+
+    <div class="section-title">📂 Tayyor Shablonlar</div>
+    <div class="grid">
+        <div class="card" onclick="selectItem('template', '🏢 Biznes shablon')"><div class="icon">🏢</div><div class="title">Biznes shablon</div></div>
+        <div class="card" onclick="selectItem('template', '🌿 Tabiat shablon')"><div class="icon">🌿</div><div class="title">Tabiat shablon</div></div>
+        <div class="card" onclick="selectItem('template', '💻 IT / Texnologiya')"><div class="icon">💻</div><div class="title">IT / Texnologiya</div></div>
+        <div class="card" onclick="selectItem('template', '🩺 Tibbiyot shablon')"><div class="icon">🩺</div><div class="title">Tibbiyot shablon</div></div>
+    </div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Oynani to'liq ochish
+
+        let selectedData = null;
+
+        function selectItem(mode, value) {
+            // Barcha aktiv klaslarni o'chirish
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+            // Bosilganiga aktiv klas qo'shish
+            event.currentTarget.classList.add('active');
+            
+            selectedData = { mode: mode, value: value };
+            
+            // Telegramdagi pastki tugmani yoqish
+            tg.MainButton.setText(`Tasdiqlash: ${value}`);
+            tg.MainButton.show();
+        }
+
+        tg.MainButton.onClick(() => {
+            if (selectedData) {
+                // Ma'lumotni botga yuborish (F.web_app_data orqali ushlanadi)
+                tg.sendData(JSON.stringify(selectedData));
+            }
+        });
+    </script>
+</body>
+</html>
