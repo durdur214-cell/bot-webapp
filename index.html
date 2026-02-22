@@ -36,15 +36,40 @@
             background-color: rgba(51, 144, 236, 0.1);
             transform: scale(0.98);
         }
+        
+        /* Maxsus "Kreativ" (Tavsiya etilgan) kartochka dizayni */
+        .card.featured {
+            grid-column: span 2; /* Ikkita joyni bir o'zi egallaydi */
+            border: 2px solid #ff9800; /* Zarg'aldoq premium hoshiya */
+            background-color: rgba(255, 152, 0, 0.08); /* Sal farq qiladigan fon */
+            padding: 15px; /* Ichki joy kattaroq */
+        }
+        .card.featured.active {
+            border-color: var(--tg-theme-button-color, #3390ec);
+        }
+        /* Featured rasm sal kattaroq bo'ladi */
+        .card.featured .preview-img {
+            height: 150px; /* Oddiylardan balandroq */
+        }
+
+        .recommended-text {
+            color: #e65100;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .preview-img {
             width: 100%;
-            height: 90px;
+            height: 90px; /* Oddiy rasmlar balandligi */
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 8px;
             border: 1px solid #ddd;
         }
-        .title { font-weight: bold; font-size: 13px; }
+        .title { font-weight: bold; font-size: 13px; margin-top: 5px; }
         .section-title { 
             margin-top: 25px; 
             margin-bottom: 15px; 
@@ -60,14 +85,16 @@
 
     <div class="section-title">🤖 AI Dizaynlari (Internetdan rasm)</div>
     <div class="grid">
-        <div class="card" onclick="selectItem('ai', '💼 Biznes (Ko\'k)')">
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32b7?w=300&h=200&fit=crop" alt="Biznes" class="preview-img">
-            <div class="title">Biznes (Ko'k)</div>
-        </div>
         
-        <div class="card" onclick="selectItem('ai', '🎨 Kreativ (Yorqin)')">
-            <img src="https://images.unsplash.com/photo-1557683316-973673baf926?w=300&h=200&fit=crop" alt="Kreativ" class="preview-img">
-            <div class="title">Kreativ (Yorqin)</div>
+        <div class="card featured" onclick="selectItem('ai', '🎨 Kreativ (Yorqin)')">
+            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?w=800&h=400&fit=crop" alt="Kreativ Premium" class="preview-img">
+            <div class="title" style="font-size: 16px;">Kreativ (Yorqin)</div>
+            <div class="recommended-text">⭐️ Eng yaxshi tanlov (Maslahat beriladi)</div>
+        </div>
+
+        <div class="card" onclick="selectItem('ai', '💼 Biznes (Ko\'k)')">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&h=200&fit=crop" alt="Biznes" class="preview-img">
+            <div class="title">Biznes (Ko'k)</div>
         </div>
         
         <div class="card" onclick="selectItem('ai', '🌑 Minimalist (Oq-Qora)')">
@@ -94,22 +121,22 @@
     <div class="section-title">📂 Tayyor Shablonlar</div>
     <div class="grid">
         <div class="card" onclick="selectItem('template', '🏢 Biznes shablon')">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&h=200&fit=crop" alt="Biznes shablon" class="preview-img">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=300&h=200&fit=crop" alt="Biznes shablon" class="preview-img">
             <div class="title">Biznes shablon</div>
         </div>
         
         <div class="card" onclick="selectItem('template', '🌿 Tabiat shablon')">
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=200&fit=crop" alt="Tabiat shablon" class="preview-img">
+            <img src="https://images.unsplash.com/photo-1500622944204-b135684e99fd?w=300&h=200&fit=crop" alt="Tabiat shablon" class="preview-img">
             <div class="title">Tabiat shablon</div>
         </div>
         
         <div class="card" onclick="selectItem('template', '💻 IT / Texnologiya')">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&h=200&fit=crop" alt="IT Texnologiya" class="preview-img">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300&h=200&fit=crop" alt="IT Texnologiya" class="preview-img">
             <div class="title">IT / Texnologiya</div>
         </div>
         
         <div class="card" onclick="selectItem('template', '🩺 Tibbiyot shablon')">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=300&h=200&fit=crop" alt="Tibbiyot" class="preview-img">
+            <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=300&h=200&fit=crop" alt="Tibbiyot" class="preview-img">
             <div class="title">Tibbiyot shablon</div>
         </div>
     </div>
